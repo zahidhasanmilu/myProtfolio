@@ -16,6 +16,7 @@ class Aboutme(models.Model):
     phone = models.CharField(max_length=11, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
     freelance_status = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -91,3 +92,79 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Contact'
         verbose_name_plural = 'Contacts'
+#############################################
+
+class Summary(models.Model):
+    summery_details = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.summery_details
+
+    class Meta:
+        verbose_name = 'Summary'
+        verbose_name_plural = 'Summaries'
+
+####################################
+class Degree(models.Model):
+    name = models.CharField(blank=True, max_length=200, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Degree'
+        verbose_name_plural = 'Degrees'
+
+##################################
+
+class Department(models.Model):
+    name = models.CharField(blank=True, max_length=200, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = ("Departments")
+
+##############################
+class Education(models.Model):
+    degrees = models.ForeignKey(Degree, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department , on_delete=models.CASCADE)
+    institute = models.CharField(blank=True, max_length=200, null=True)
+    gread_point = models.FloatField(blank=True, null=True)
+    admission_date = models.DateField(blank=True, null=True)
+    course_end_date = models.DateField(blank=True, null=True)
+    department_descriptions = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.institute
+
+    class Meta:
+        verbose_name_plural = 'Educations'
+
+
+##############################################
+
+class Professional_Experience(models.Model):
+    designation = models.CharField(blank=True, max_length=200, null=True)
+    company_name = models.CharField(blank=True, max_length=200, null=True)
+    address = models.TextField(blank=True, null=True)
+    working_process = models.TextField(blank=True, null=True)
+    joining_date = models.DateField(blank=True, null=True)
+    resign_date = models.DateField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.company_name
+
+    class Meta:
+        verbose_name = 'Professional_Experience'
+        verbose_name_plural = 'Professional_Experiences'

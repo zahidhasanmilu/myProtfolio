@@ -63,10 +63,9 @@
       </nav><!-- .navbar -->
 
       <div class="social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="{{aboutme.website}}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="{{aboutme.github}}" target="_blank" class="instagram"><i class="bi bi-github"></i></a>
+        <a href="{{aboutme.linkdin}}" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
@@ -297,37 +296,34 @@
 
       <div class="row">
         <div class="col-lg-6">
-          <h3 class="resume-title">Sumary</h3>
+          <h3 class="resume-title">Summary</h3>
           <div class="resume-item pb-0">
-            <h4>Alice Barkley</h4>
-            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing
-                user-centered digital/print marketing material from initial concept to final, polished deliverable.</em>
+            <h4>Zahid Hasan Milu</h4>
+            {% for i in summary %}
+            <p><em>{{i.summery_details}}</em>
             </p>
+            {% endfor %}
+            
             <p>
             <ul>
-              <li>Portland par 127,Orlando, FL</li>
-              <li>(123) 456-7891</li>
-              <li>alice.barkley@example.com</li>
+              <li>{{aboutme.address}}</li>
+              <li>{{aboutme.phone}}</li>
+              <li>{{aboutme.email}}</li>
             </ul>
             </p>
           </div>
 
           <h3 class="resume-title">Education</h3>
+          {% for e in education %}          
           <div class="resume-item">
-            <h4>Master of Fine Arts &amp; Graphic Design</h4>
-            <h5>2015 - 2016</h5>
-            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-            <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui
-              ut dignissimos deleniti nerada porti sand markend</p>
-          </div>
-          <div class="resume-item">
-            <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-            <h5>2010 - 2014</h5>
-            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-            <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius
-              unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila
-            </p>
-          </div>
+            <h4>{{e.degrees.name}}</h4>
+            <h5>{{e.admission_date|date:"Y" }} - {{e.course_end_date|date:"Y" }}</h5>
+            <p><em>{{e.institute}}</em></p>
+            <p><em>{{e.department}}</em></p>
+            <p><em>GPA: {{e.gread_point}}</em></p>
+            <p align="justify">{{e.department_descriptions}}</p>
+          </div>          
+          {% endfor %}
         </div>
         <div class="col-lg-6">
           <h3 class="resume-title">Professional Experience</h3>
@@ -616,7 +612,7 @@
           <div class="info-box">
             <i class="bx bx-map"></i>
             <h3>My Address</h3>
-            <p>A108 Adam Street, New York, NY 535022</p>
+            <p>{{aboutme.address}}</p>
           </div>
         </div>
 
@@ -625,11 +621,9 @@
             <i class="bx bx-share-alt"></i>
             <h3>Social Profiles</h3>
             <div class="social-links">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="{{aboutme.website}}" target="blank" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="{{aboutme.github}}" target="blank" class="google-plus"><i class="bi bi-github"></i></a>
+              <a href="{{aboutme.linkdin}}" target="blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
         </div>
@@ -638,14 +632,14 @@
           <div class="info-box">
             <i class="bx bx-envelope"></i>
             <h3>Email Me</h3>
-            <p>contact@example.com</p>
+            <p>{{aboutme.email}}</p>
           </div>
         </div>
         <div class="col-md-6 mt-4 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-phone-call"></i>
             <h3>Call Me</h3>
-            <p>+1 5589 55488 55</p>
+            <p>{{aboutme.phone}}</p>
           </div>
         </div>
       </div>
@@ -667,7 +661,7 @@
         <div class="form-group mt-3">
           <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
         </div>
- <br>
+        <br>
         <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
       </form>
     </div>
