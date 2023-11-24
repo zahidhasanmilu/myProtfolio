@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 ]
 CUSTOME_APPS = [
     'portfolioapp',
+    # 'ckeditor',
 ]
 INSTALLED_APPS = INSTALLED_APPS + CUSTOME_APPS
 

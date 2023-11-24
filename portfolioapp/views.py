@@ -11,8 +11,7 @@ def home(request):
     interest = Interest.objects.all()
     summary = Summary.objects.all()
     education = Education.objects.all()
-    pExperience = Professional_Experience.object.all()
-    total_experience = pExperience.admission_date - pExperience.course_end_date
+    pExperience = Professional_Experience.objects.all()
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -31,7 +30,6 @@ def home(request):
         'summary':summary,
         'education':education,
         'pExperience': pExperience,
-        'total_experience':total_experience,
 
     }
     return render(request, 'portfolio/index.html', context)
