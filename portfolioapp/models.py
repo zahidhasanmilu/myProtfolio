@@ -2,11 +2,10 @@ from django.db import models
 import datetime
 
 
-
 # Create your models here.
 class Aboutme(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
-    Birthday=models.DateField(default=datetime.datetime.today)
+    Birthday = models.DateField(default=datetime.datetime.today)
     profile_pic = models.ImageField(upload_to='Uploaded/Profile_pic/')
     short_description = models.TextField(blank=True, null=True)
     designation = models.CharField(max_length=50, blank=True, null=True)
@@ -24,30 +23,31 @@ class Aboutme(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     def __str__(self):
         return self.name
-    
-    class Meta:        
+
+    class Meta:
         verbose_name = 'Aboutme'
         verbose_name_plural = 'Aboutmes'
 #############################################
 
+
 class Count(models.Model):
     what_count = models.CharField(max_length=100, blank=True, null=True)
     count_number = models.IntegerField(blank=True, null=True)
-    icon =  models.CharField(max_length=100, blank=True, null=True)
+    icon = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.what_count
-    
+
     class Meta:
         verbose_name = 'Count'
         verbose_name_plural = 'Counts'
 
 ############################################
+
 
 class Skill(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
@@ -57,27 +57,29 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name = 'Skill'
         verbose_name_plural = 'Skills'
 
 ##############################################
 
+
 class Interest(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
-    icon =  models.CharField(max_length=100, blank=True, null=True)
+    icon = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return self.title
-    
-    class Meta:        
+
+    class Meta:
         verbose_name = 'Interest'
         verbose_name_plural = 'Interests'
 
 ##############################
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
@@ -86,7 +88,6 @@ class Contact(models.Model):
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
 
     def __str__(self):
         return self.name
@@ -95,6 +96,7 @@ class Contact(models.Model):
         verbose_name = 'Contact'
         verbose_name_plural = 'Contacts'
 #############################################
+
 
 class Summary(models.Model):
     summery_details = models.TextField(blank=True, null=True)
@@ -109,6 +111,8 @@ class Summary(models.Model):
         verbose_name_plural = 'Summaries'
 
 ####################################
+
+
 class Degree(models.Model):
     name = models.CharField(blank=True, max_length=200, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -123,6 +127,7 @@ class Degree(models.Model):
 
 ##################################
 
+
 class Department(models.Model):
     name = models.CharField(blank=True, max_length=200, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -130,15 +135,20 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name_plural = ("Departments")
 
 ##############################
+
+
 class Education(models.Model):
     degrees = models.ForeignKey(Degree, on_delete=models.CASCADE)
-    department = models.ForeignKey(Department , on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     institute = models.CharField(blank=True, max_length=200, null=True)
     gread_point = models.FloatField(blank=True, null=True)
+    gread_point_cgpa = models.FloatField(blank=True, null=True)
+    out_of_greadPoint = models.FloatField(blank=True, null=True)
     admission_date = models.DateField(blank=True, null=True)
     course_end_date = models.DateField(blank=True, null=True)
     department_descriptions = models.TextField(blank=True, null=True)

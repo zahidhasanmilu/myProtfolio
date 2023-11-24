@@ -303,7 +303,7 @@
             <p><em>{{i.summery_details}}</em>
             </p>
             {% endfor %}
-            
+
             <p>
             <ul>
               <li>{{aboutme.address}}</li>
@@ -314,15 +314,19 @@
           </div>
 
           <h3 class="resume-title">Education</h3>
-          {% for e in education %}          
+          {% for e in education %}
           <div class="resume-item">
             <h4>{{e.degrees.name}}</h4>
             <h5>{{e.admission_date|date:"Y" }} - {{e.course_end_date|date:"Y" }}</h5>
             <p><em>{{e.institute}}</em></p>
             <p><em>{{e.department}}</em></p>
-            <p><em>GPA: {{e.gread_point}}</em></p>
+            {% if e.gread_point %}
+            <p><em>GPA: {{e.gread_point}} Out of GPA: {{e.out_of_greadPoint}}</em></p>
+            {% else %}
+            <p><em>CGPA: {{e.gread_point_cgpa}} Out of CGPA: {{e.out_of_greadPoint}}</em></p>
+            {% endif %}
             <p align="justify">{{e.department_descriptions}}</p>
-          </div>          
+          </div>
           {% endfor %}
         </div>
         <div class="col-lg-6">
@@ -333,7 +337,7 @@
             <h5>{{p.joining_date|date:"Y" }} - {{p.resign_date|date:"Y" }}</h5>
             <p><em>{{p.company_name}} </em></p>
             <p>
-           {{p.working_process}}
+              {{p.working_process}}
             </p>
           </div>
           {% endfor %}

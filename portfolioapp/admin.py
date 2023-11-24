@@ -4,18 +4,26 @@ from . models import Summary, Degree, Department, Education, Professional_Experi
 
 # List display
 
+
 class SummaryAdmin(admin.ModelAdmin):
     list_display = ('summery_details',)
+
+
 class DegreeAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
+
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
+
 class EducationAdmin(admin.ModelAdmin):
     list_display = ('degrees', 'department', 'institute', 'gread_point')
+
+
 class Professional_ExperienceAdmin(admin.ModelAdmin):
-    list_display = ('designation', 'company_name', 'joining_date', 'resign_date')
-
-
+    list_display = ('designation', 'company_name',
+                    'joining_date', 'resign_date')
 
 
 class AboutmeAdmin(admin.ModelAdmin):
@@ -46,10 +54,6 @@ admin.site.register(Interest, InterestAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Summary, SummaryAdmin)
 admin.site.register(Degree, DegreeAdmin)
-admin.site.register(Department,DepartmentAdmin)
-admin.site.register(Education,EducationAdmin)
-admin.site.register(Professional_Experience,Professional_ExperienceAdmin)
-
-
-
-
+admin.site.register(Department, DepartmentAdmin)
+admin.site.register(Education, EducationAdmin)
+admin.site.register(Professional_Experience, Professional_ExperienceAdmin)

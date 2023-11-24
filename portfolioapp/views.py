@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Aboutme, Count, Skill, Interest, Summary, Degree, Department, Education,Professional_Experience
+from . models import Aboutme, Count, Skill, Interest, Summary, Degree, Department, Education, Professional_Experience
 from .forms import ContactForm
 
 
@@ -21,16 +21,14 @@ def home(request):
     else:
         form = ContactForm()
 
-    context ={
+    context = {
         'aboutme': aboutme,
-        'count':count,
-        'technical_skil':technical_skil,
-        'interest':interest,
-        'form':form,
-        'summary':summary,
-        'education':education,
+        'count': count,
+        'technical_skil': technical_skil,
+        'interest': interest,
+        'form': form,
+        'summary': summary,
+        'education': education,
         'pExperience': pExperience,
-
     }
     return render(request, 'portfolio/index.html', context)
-
