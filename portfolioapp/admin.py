@@ -1,6 +1,6 @@
 from django.contrib import admin
 from . models import Aboutme, Count, Skill, Interest, Contact
-from . models import Summary, Degree, Department, Education, Professional_Experience
+from . models import Summary, Degree, Department, Education, Professional_Experience, Professional_Traning
 
 # List display
 
@@ -46,6 +46,10 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'message')
 
 
+class Professional_TraningAdmin(admin.ModelAdmin):
+    list_display = ('course_name', 'course_duration', 'course_institute')
+
+
 # Register your models here.
 admin.site.register(Aboutme, AboutmeAdmin)
 admin.site.register(Count, CountAdmin)
@@ -57,3 +61,4 @@ admin.site.register(Degree, DegreeAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Professional_Experience, Professional_ExperienceAdmin)
+admin.site.register( Professional_Traning,Professional_TraningAdmin)

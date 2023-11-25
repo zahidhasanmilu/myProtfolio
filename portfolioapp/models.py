@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from tinymce.models import HTMLField
 
 
 # Create your models here.
@@ -169,6 +170,7 @@ class Professional_Experience(models.Model):
     company_name = models.CharField(blank=True, max_length=200, null=True)
     address = models.TextField(blank=True, null=True)
     working_process = models.TextField(blank=True, null=True)
+    work_content = HTMLField(blank=True, null=True)
     joining_date = models.DateField(blank=True, null=True)
     resign_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -180,3 +182,20 @@ class Professional_Experience(models.Model):
     class Meta:
         verbose_name = 'Professional_Experience'
         verbose_name_plural = 'Professional_Experiences'
+
+##########################################
+
+class Professional_Traning(models.Model):
+    course_name = models.CharField(blank=True, max_length=200, null=True)
+    course_duration = models.IntegerField(blank=True, null=True)
+    course_institute = models.CharField(blank=True, max_length=200, null=True)
+    course_institute_url = models.URLField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.course_name} - {self.course_duration} Months - {self.course_institute}' 
+
+    class Meta:
+        verbose_name = 'Professional_Traning'
+        verbose_name_plural = 'Professional_Tranings'

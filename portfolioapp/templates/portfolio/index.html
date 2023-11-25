@@ -55,8 +55,8 @@
           <li><a class="nav-link active" href="#header">Home</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
           <li><a class="nav-link" href="#resume">Resume</a></li>
-          <li><a class="nav-link" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <!-- <li><a class="nav-link" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#portfolio">Portfolio</a></li> -->
           <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -64,6 +64,8 @@
 
       <div class="social-links">
         <a href="{{aboutme.website}}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/minionmilu/" target="_blank" class="facebook"><i
+            class="bi bi-instagram"></i></a>
         <a href="{{aboutme.github}}" target="_blank" class="instagram"><i class="bi bi-github"></i></a>
         <a href="{{aboutme.linkdin}}" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
@@ -98,6 +100,9 @@
                 </li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
                   <a href="{{aboutme.website}}"><span>facebook</span></a> -
+                  <a href="https://www.instagram.com/minionmilu/" target="_blank" class="instagram"><i
+                      class="bi bi-instagram"></i></a> -
+
                   <a href="{{aboutme.github}}"><span>github </span></a> -
                   <a href="{{aboutme.linkdin}}"><span>linkdin</span></a>
                 </li>
@@ -317,7 +322,11 @@
           {% for e in education %}
           <div class="resume-item">
             <h4>{{e.degrees.name}}</h4>
+            {% if e.gread_point %}
+            <h5>{{e.course_end_date|date:"Y" }}</h5>
+            {% else %}
             <h5>{{e.admission_date|date:"Y" }} - {{e.course_end_date|date:"Y" }}</h5>
+            {% endif %}
             <p><em>{{e.institute}}</em></p>
             <p><em>{{e.department}}</em></p>
             {% if e.gread_point %}
@@ -336,19 +345,46 @@
             <h4>{{p.designation}}</h4>
             <h5>{{p.joining_date|date:"Y" }} - {{p.resign_date|date:"Y" }}</h5>
             <p><em>{{p.company_name}} </em></p>
-            <p>
-              {{p.working_process}}
+            <p align='justify'>
+              {{p.work_content|safe}}
             </p>
           </div>
           {% endfor %}
         </div>
+      </div>
+      <div class="row">
+        <center>
+          <h3 class="resume-title">Professional Training</h3>
+          <div class="col-lg-12">
+            <table class="table table-hover table-striped-columns table-dark border border-success-subtle">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Serial No</th>
+                  <th scope="col">Course Title</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Institute</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for pt in pTraning %}
+                <tr>
+                  <th scope="row">0{{forloop.counter}}</th>
+                  <td>{{pt.course_name}}</td>
+                  <td>{{pt.course_duration}} Months</td>
+                  <td><a href="{{pt.course_institute_url}}" target="_blank">{{pt.course_institute}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </center>
       </div>
 
     </div>
   </section><!-- End Resume Section -->
 
   <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
+  <!-- <section id="services" class="services">
     <div class="container">
 
       <div class="section-title">
@@ -408,10 +444,11 @@
       </div>
 
     </div>
-  </section><!-- End Services Section -->
+  </section> -->
+  <!-- End Services Section -->
 
   <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
+  <!-- <section id="portfolio" class="portfolio">
     <div class="container">
 
       <div class="section-title">
@@ -579,7 +616,8 @@
       </div>
 
     </div>
-  </section><!-- End Portfolio Section -->
+  </section> -->
+  <!-- End Portfolio Section -->
 
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
@@ -607,6 +645,8 @@
             <div class="social-links">
               <a href="{{aboutme.website}}" target="blank" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="{{aboutme.github}}" target="blank" class="google-plus"><i class="bi bi-github"></i></a>
+              <a href="https://www.instagram.com/minionmilu/" target="_blank" class="instagram"><i
+                  class="bi bi-instagram"></i></a>
               <a href="{{aboutme.linkdin}}" target="blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>

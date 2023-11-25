@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from . models import Aboutme, Count, Skill, Interest, Summary, Degree, Department, Education, Professional_Experience
+from . models import Aboutme, Count, Skill, Interest, Summary, Degree
+from . models import Department, Education, Professional_Experience, Professional_Traning
 from .forms import ContactForm
 
 
@@ -12,6 +13,7 @@ def home(request):
     summary = Summary.objects.all()
     education = Education.objects.all()
     pExperience = Professional_Experience.objects.all()
+    pTraning = Professional_Traning.objects.all()
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -30,5 +32,6 @@ def home(request):
         'summary': summary,
         'education': education,
         'pExperience': pExperience,
+        'pTraning': pTraning,
     }
     return render(request, 'portfolio/index.html', context)

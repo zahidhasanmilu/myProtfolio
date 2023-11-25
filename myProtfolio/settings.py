@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 CUSTOME_APPS = [
     'portfolioapp',
     # 'ckeditor',
+    'tinymce'
 ]
 INSTALLED_APPS = INSTALLED_APPS + CUSTOME_APPS
 
