@@ -175,6 +175,7 @@ class Professional_Experience(models.Model):
     resign_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.company_name
@@ -192,6 +193,7 @@ class Professional_Traning(models.Model):
     course_institute_url = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.course_name} - {self.course_duration} Months - {self.course_institute}' 

@@ -13,7 +13,7 @@ def home(request):
     summary = Summary.objects.all()
     education = Education.objects.all()
     pExperience = Professional_Experience.objects.all()
-    pTraning = Professional_Traning.objects.all()
+    pTraning = Professional_Traning.objects.filter(is_active=True)
 
     if request.method == 'POST':
         form = ContactForm(request.POST)

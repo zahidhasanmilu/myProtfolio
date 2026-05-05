@@ -47,7 +47,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class Professional_TraningAdmin(admin.ModelAdmin):
-    list_display = ('course_name', 'course_duration', 'course_institute')
+    list_display = ('course_name', 'course_duration', 'course_institute', 'is_active')
 
 
 # Register your models here.
